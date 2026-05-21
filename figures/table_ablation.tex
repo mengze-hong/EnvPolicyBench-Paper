@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model Variant} & \textbf{T1 F1} & \textbf{T2 F1} & \textbf{T1 $\kappa$} \\
+\midrule
+\multicolumn{4}{l}{\textit{Ablating modalities}} \\
+Text only (Qwen3-8B frozen)     & 0.213 & 0.127 & 0.000 \\
+Indicators only (MLP)           & 0.419 & 0.129 & 0.191 \\
+\midrule
+\multicolumn{4}{l}{\textit{Ablating fusion mechanism}} \\
+Concat (no cross-attn)          & 0.385 & 0.201 & 0.215 \\
+Cross-attn, no gate             & 0.393 & 0.210 & 0.237 \\
+Full model (cross-attn + gate)  & \textbf{0.412} & \textbf{0.225} & \textbf{0.281} \\
+\midrule
+\multicolumn{4}{l}{\textit{Ablating training objectives}} \\
+w/o regression loss ($\lambda_r{=}0$)  & 0.405 & 0.212 & 0.264 \\
+w/o contrastive loss ($\lambda_c{=}0$) & 0.401 & 0.218 & 0.258 \\
+w/o indicator mask $m$                 & 0.378 & 0.195 & 0.198 \\
+Full multi-task                        & \textbf{0.412} & \textbf{0.225} & \textbf{0.281} \\
+\bottomrule
+\end{tabular}
+\caption{Ablation study on \textsc{EnvPolicy-Dual} (Qwen3-8B backbone, full training set, 17,704 records). Frozen encoder with only fusion layers and task heads trained (2.09M parameters).}
+\label{tab:ablation}
+\end{table}

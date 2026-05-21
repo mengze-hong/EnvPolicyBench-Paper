@@ -1,0 +1,195 @@
+% Requires in preamble:
+% \usepackage[table]{xcolor}
+% \usepackage{colortbl}
+% \usepackage{booktabs}
+% \usepackage{fontawesome5}
+% \usepackage{tikz}
+% \usepackage{array}
+
+% =========================
+% Re-aligned brand colors
+% =========================
+
+% Ours (keep as-is, slightly softened red)
+\definecolor{ourrow}{RGB}{253,235,235}
+\definecolor{ourstxt}{RGB}{192,40,40}
+
+% OpenAI (ChatGPT / OpenAI)
+\definecolor{openairow}{RGB}{234,244,242}
+\definecolor{openaitxt}{RGB}{122,175,161}
+
+% Claude
+\definecolor{anthrow}{RGB}{252,240,235}
+\definecolor{anthtxt}{RGB}{217,119,87}
+
+% Google (Gemini / Google)
+\definecolor{googlerow}{RGB}{241,238,250}
+\definecolor{googletxt}{RGB}{140,123,204}
+
+% DeepSeek
+\definecolor{deepseekrow}{RGB}{235,240,255}
+\definecolor{deepseektxt}{RGB}{91,119,255}
+
+% Doubao (darkened from too-light cyan)
+\definecolor{doubaorow}{RGB}{220,236,250}
+\definecolor{doubaotxt}{RGB}{120,170,210}
+
+% Tencent
+\definecolor{tencrow}{RGB}{235,242,255}
+\definecolor{tenctxt}{RGB}{0,82,204}
+
+% Qwen
+\definecolor{qwenrow}{RGB}{242,241,255}
+\definecolor{qwentxt}{RGB}{136,132,240}
+
+% Medal commands using TikZ
+\newcommand{\goldmedal}{%
+  \tikz[baseline=-0.8ex]{
+    \node[circle, fill=yellow!70!orange, draw=orange!80!black, line width=0.4pt,
+          text=white, font=\tiny\bfseries, inner sep=1pt] {1};
+  }%
+}
+\newcommand{\silvermedal}{%
+  \tikz[baseline=-0.8ex]{
+    \node[circle, fill=gray!40, draw=gray!70, line width=0.4pt,
+          text=white, font=\tiny\bfseries, inner sep=1pt] {2};
+  }%
+}
+\newcommand{\bronzemedal}{%
+  \tikz[baseline=-0.8ex]{
+    \node[circle, fill=orange!70, draw=orange!90!red, line width=0.4pt,
+          text=white, font=\tiny\bfseries, inner sep=1pt] {3};
+  }%
+}
+
+% Logo commands (Font Awesome alternatives or text fallbacks)
+%\newcommand{\logoEnvPolicy}{\faLeaf}
+%\newcommand{\logoTFIDF}{\textsc{\scriptsize TF/IDF}}
+%\newcommand{\logoOpenAI}{\faCircleNotch}
+%\newcommand{\logoAnthropic}{\faSnowflake}
+%\newcommand{\logoGoogle}{\faGoogle}
+%\newcommand{\logoDeepSeek}{\faFish}
+%\newcommand{\logoDoubao}{\faCube}
+%\newcommand{\logoTencent}{\faChartLine}
+%\newcommand{\logoQwen}{\faShapes}
+
+\begin{table*}[!t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.4}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{@{}>{\columncolor{white}}l|cccccccc|c@{}}
+\toprule
+\multicolumn{1}{c|}{\textbf{Models (Methods)}}
+  & \multicolumn{8}{c|}{\textbf{T1 Macro-F1 Score} ($\uparrow$)}
+  & \textbf{Rank} \\
+\cmidrule(lr){2-9}
+  & \textbf{Agriculture}
+  & \textbf{Environment}
+  & \textbf{Food Safety}
+  & \textbf{Fisheries}
+  & \textbf{Land \& Water}
+  & \textbf{Energy}
+  & \textbf{Other}
+  & \textbf{Avg.}
+  & \\
+\midrule
+% --- Ours (highlighted row) ---
+\rowcolor{ourrow}
+\multicolumn{1}{l|}{\logoEnvPolicy~\textcolor{ourstxt}{\textbf{EnvPolicy-Dual (Ours)}}}
+  & \textcolor{ourstxt}{\textbf{0.533}}
+  & \textcolor{ourstxt}{\textbf{0.434}}
+  & \textcolor{ourstxt}{\textbf{0.479}}
+  & \textcolor{ourstxt}{\textbf{0.438}}
+  & \textcolor{ourstxt}{\textbf{0.460}}
+  & \textcolor{ourstxt}{\textbf{0.416}}
+  & \textcolor{ourstxt}{\textbf{0.403}}
+  & \textcolor{ourstxt}{\textbf{0.452}}
+  & \textcolor{ourstxt}{\textbf{1}} \\
+% --- GPT-5.5 ---
+\rowcolor{openairow}
+\multicolumn{1}{l|}{\logoOpenAI~\textcolor{openaitxt}{GPT-5.5}}
+  & \textcolor{openaitxt}{0.245}
+  & \textcolor{openaitxt}{0.268}
+  & \textcolor{openaitxt}{0.307}
+  & \textcolor{openaitxt}{0.246}
+  & \textcolor{openaitxt}{0.199}
+  & \textcolor{openaitxt}{0.254}
+  & \textcolor{openaitxt}{0.266}
+  & \textcolor{openaitxt}{0.255}
+  & 2 \\
+% --- Claude Opus 4.7 ---
+\rowcolor{anthrow}
+\multicolumn{1}{l|}{\logoAnthropic~\textcolor{anthtxt}{Claude Opus 4.7}}
+  & \textcolor{anthtxt}{0.277}
+  & \textcolor{anthtxt}{0.269}
+  & \textcolor{anthtxt}{0.235}
+  & \textcolor{anthtxt}{0.258}
+  & \textcolor{anthtxt}{0.259}
+  & \textcolor{anthtxt}{0.278}
+  & \textcolor{anthtxt}{0.292}
+  & \textcolor{anthtxt}{0.267} & 3  \\
+% --- Gemini 3.1 Pro ---
+\rowcolor{googlerow}
+\multicolumn{1}{l|}{\logoGoogle~\textcolor{googletxt}{Gemini 3.1 Pro}}
+  & \textcolor{googletxt}{0.313}
+  & \textcolor{googletxt}{0.303}
+  & \textcolor{googletxt}{0.313}
+  & \textcolor{googletxt}{0.264}
+  & \textcolor{googletxt}{0.270}
+  & \textcolor{googletxt}{0.286}
+  & \textcolor{googletxt}{0.309}
+  & \textcolor{googletxt}{0.294} & 4 \\
+
+% --- DeepSeek-V4-Pro ---
+\rowcolor{deepseekrow}
+\multicolumn{1}{l|}{\logoDeepSeek~\textcolor{deepseektxt}{DeepSeek-V4-Pro}}
+  & \textcolor{deepseektxt}{0.304}
+  & \textcolor{deepseektxt}{0.303}
+  & \textcolor{deepseektxt}{0.242}
+  & \textcolor{deepseektxt}{0.254}
+  & \textcolor{deepseektxt}{0.253}
+  & \textcolor{deepseektxt}{0.250}
+  & \textcolor{deepseektxt}{0.275}
+  & \textcolor{deepseektxt}{0.268} & 5 \\
+
+% --- Doubao 2.0 Pro ---
+\rowcolor{doubaorow}
+\multicolumn{1}{l|}{\logoDoubao~\textcolor{doubaotxt}{Doubao 2.0 Pro}}
+  & \textcolor{doubaotxt}{0.247}
+  & \textcolor{doubaotxt}{0.266}
+  & \textcolor{doubaotxt}{0.214}
+  & \textcolor{doubaotxt}{0.202}
+  & \textcolor{doubaotxt}{0.225}
+  & \textcolor{doubaotxt}{0.182}
+  & \textcolor{doubaotxt}{0.204}
+  & \textcolor{doubaotxt}{0.220} & 6 \\
+
+% --- Hunyuan-3 ---
+\rowcolor{tencrow}
+\multicolumn{1}{l|}{\logoTencent~\textcolor{tenctxt}{Hunyuan-3}}
+  & \textcolor{tenctxt}{0.301}
+  & \textcolor{tenctxt}{0.265}
+  & \textcolor{tenctxt}{0.293}
+  & \textcolor{tenctxt}{0.247}
+  & \textcolor{tenctxt}{0.270}
+  & \textcolor{tenctxt}{0.286}
+  & \textcolor{tenctxt}{0.258}
+  & \textcolor{tenctxt}{0.274} & 7 \\
+
+% --- Qwen3.6-Plus ---
+\rowcolor{qwenrow}
+\multicolumn{1}{l|}{\logoQwen~\textcolor{qwentxt}{Qwen3.6-Plus}}
+  & \textcolor{qwentxt}{0.301}
+  & \textcolor{qwentxt}{0.237}
+  & \textcolor{qwentxt}{0.307}
+  & \textcolor{qwentxt}{0.266}
+  & \textcolor{qwentxt}{0.248}
+  & \textcolor{qwentxt}{0.256}
+  & \textcolor{qwentxt}{0.303}
+  & \textcolor{qwentxt}{0.274} & 8 \\
+\bottomrule
+\end{tabular}}
+\caption{Per-domain T1 macro-F1 leaderboard. EnvPolicy-Dual ranks \textbf{\#1} across all 7 domains and overall.}
+\label{tab:domain_breakdown}
+\end{table*}

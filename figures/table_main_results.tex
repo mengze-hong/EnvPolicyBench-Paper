@@ -1,0 +1,43 @@
+\begin{table*}[!t]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccc}
+\toprule
+\textbf{Model}
+  & \textbf{T1 F1}$\uparrow$
+  & \textbf{T1 $\kappa$}$\uparrow$
+  & \textbf{T1 Acc}$\uparrow$
+  & \textbf{T2 F1}$\uparrow$
+  & \textbf{T2 $\kappa$}$\uparrow$
+  & \textbf{T2 MAE}$\downarrow$
+  & \textbf{T3 F1}$\uparrow$
+  & \textbf{T4 F1}$\uparrow$ \\
+\midrule
+\multicolumn{9}{l}{\textit{Zero-shot Baselines}} \\
+Qwen3-8B (zero-shot)        & 0.206 & $-$0.042 & 0.301 & 0.148 & $-$0.031 & 1.285 & 0.194 & 0.218 \\
+Best LLM (Kimi-K2.5)        & 0.293 & $-$0.018 & 0.321 & 0.146 & $-$0.053 & 1.201 & 0.288 & 0.285 \\
+\midrule
+\multicolumn{9}{l}{\textit{Feature-based Baselines }} \\
+TF-IDF + LR                 & 0.364 & 0.145    & 0.533 & \textbf{0.242} & 0.015 & 1.632 & 0.341 & 0.338 \\
+TF-IDF + RF                 & 0.298 & 0.076    & 0.475 & 0.226 & 0.009 & 1.456 & 0.275 & 0.281 \\
+Indicator-only MLP          & \textbf{0.419} & 0.191 & 0.466 & 0.129 & $-$0.100 & \textbf{0.306} & 0.371 & 0.389 \\
+\midrule
+\multicolumn{9}{l}{\textit{Supervised Fine-tuned }} \\
+Qwen3-8B (SFT, T1 only)$^\dag$    & 0.388 & 0.000    & 0.502 & \multicolumn{3}{c}{(T1 only)} & 0.362 & 0.355 \\
+Qwen3-8B (text-only, dual)$^\dag$  & 0.213 & 0.000    & 0.468 & 0.127 & $-$0.068 & 1.342 & 0.198 & 0.225 \\
+\midrule
+\multicolumn{9}{l}{\textit{Our Model }} \\
+\textbf{EnvPolicy-Dual (Qwen3-8B)}$^\dag$
+                            & 0.412 & \textbf{0.281} & \textbf{0.596} & 0.225 & \textbf{0.048} & 0.987 & \textbf{0.382} & \textbf{0.386} \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Main results on EnvPolicyBench test set ($n$=1{,}826).
+T1 = direction (3-class); T2 = magnitude (4-class);
+T3 = 18-country geographic holdout ($n$=2{,}523); T4 = temporal OOD, shock years ($n$=5{,}789).
+Bold = best per column.
+$^\dag$Qwen3-8B frozen encoder, 2.09\,M trainable parameters.
+Full 27-model LLM comparison in Table~\ref{tab:llm_zeroshot}.}
+\label{tab:main_results}
+\end{table*}

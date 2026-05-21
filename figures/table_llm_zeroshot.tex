@@ -1,0 +1,76 @@
+%% table_llm_zeroshot.tex
+%% Zero-shot LLM baselines
+\begin{table*}[!t]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\setlength{\fboxsep}{1.5pt} % reduced padding to fix number position
+\definecolor{bestcell}{RGB}{255,235,156}
+\definecolor{secondcell}{RGB}{189,215,238}
+\begin{tabular}{@{}l rrr rr r rr@{}}
+\toprule
+ & \multicolumn{3}{c}{\textbf{T1 Direction (Test)}}
+ & \multicolumn{2}{c}{\textbf{T2 Magnitude (Test)}}
+ & \textbf{T3 Holdout}
+ & \multicolumn{2}{c}{\textbf{T4 OOD (Shock yrs)}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-6}\cmidrule(lr){7-7}\cmidrule(lr){8-9}
+\textbf{Model}
+  & \textbf{Acc}$\uparrow$
+  & \textbf{F1}$\uparrow$
+  & $\boldsymbol{\kappa}\uparrow$
+  & \textbf{F1}$\uparrow$
+  & \textbf{MAE}$\downarrow$
+  & \textbf{F1}$\uparrow$
+  & \textbf{Acc}$\uparrow$
+  & \textbf{F1}$\uparrow$ \\
+\midrule
+\multicolumn{9}{l}{\textit{OpenAI}} \\
+GPT-5 & \colorbox{bestcell}{\textbf{0.343}} & 0.276 & \colorbox{bestcell}{\textbf{0.015}} & 0.154 & 1.331 & 0.264 & \colorbox{secondcell}{0.367} & 0.284 \\
+GPT-5-mini & 0.317 & 0.275 & $-$0.024 & 0.173 & 1.203 & 0.251 & 0.333 & 0.279 \\
+GPT-5.1 & 0.311 & 0.261 & $-$0.033 & 0.182 & 1.092 & 0.269 & 0.347 & 0.307 \\
+GPT-5.2 & 0.305 & 0.249 & $-$0.042 & 0.194 & 1.106 & 0.270 & 0.339 & 0.278 \\
+GPT-5.5 & 0.301 & 0.243 & $-$0.048 & 0.226 & 1.115 & 0.247 & 0.353 & 0.285 \\
+\midrule
+\multicolumn{9}{l}{\textit{Anthropic}} \\
+Claude Sonnet 4.5 & 0.317 & 0.278 & $-$0.024 & 0.188 &  \colorbox{bestcell}{\textbf{1.068}} & 0.278 & 0.353 & 0.310 \\
+Claude Opus 4.5 & 0.293 & 0.230 & $-$0.060 & 0.209 & 1.141 & 0.231 & 0.326 & 0.257 \\
+Claude Opus 4.6 & 0.293 & 0.227 & $-$0.060 & 0.203 & 1.129 & 0.227 & 0.326 & 0.253 \\
+Claude Opus 4.7 & 0.319 & 0.263 & $-$0.021 & 0.201 & 1.100 & 0.263 & 0.355 & 0.293 \\
+\midrule
+\multicolumn{9}{l}{\textit{Google Gemini}} \\
+Gemini 2.5 Flash & 0.315 & 0.268 & $-$0.027 &  \colorbox{bestcell}{\textbf{0.243}}  & 1.213 & 0.270 & 0.355 & 0.291 \\
+Gemini 2.5 Pro & 0.321 & 0.283 & $-$0.018 & \colorbox{secondcell}{0.242} & 1.229 & \colorbox{bestcell}{\textbf{0.295}} & 0.355 & 0.308 \\
+Gemini 3 Pro & 0.313 & 0.259 & $-$0.030 & 0.215 & 1.203 & 0.255 & 0.355 & 0.298 \\
+Gemini 3 Flash & 0.311 & 0.226 & $-$0.033 & 0.205 & 1.149 & 0.202 & 0.353 & 0.272 \\
+Gemini 3.1 Pro & 0.297 & 0.243 & $-$0.054 & 0.225 & 1.195 & 0.254 & 0.353 & 0.296 \\
+\midrule
+\multicolumn{9}{l}{\textit{DeepSeek}} \\
+DeepSeek-R1 & 0.311 & \colorbox{secondcell}{0.283} & $-$0.033 & 0.207 & 1.145 & 0.290 & 0.343 & 0.302 \\
+DeepSeek-V3 & 0.299 & 0.241 & $-$0.051 & 0.185 &  \colorbox{secondcell}{1.076}  & 0.248 & 0.351 & 0.289 \\
+DeepSeek-V3.2 & 0.303 & 0.259 & $-$0.045 & 0.221 & 1.167 & 0.262 & \colorbox{bestcell}{\textbf{0.369}} & \colorbox{bestcell}{\textbf{0.317}} \\
+DeepSeek-V4-Pro & 0.321 & 0.277 & $-$0.018 & 0.222 & 1.167 & 0.278 & 0.353 & \colorbox{secondcell}{0.316} \\
+\midrule
+\multicolumn{9}{l}{\textit{ByteDance (Doubao)}} \\
+Doubao Seed 1.6 & 0.327 & 0.269 & $-$0.009 & 0.218 & 1.145 & 0.234 & 0.335 & 0.274 \\
+Doubao Seed 2.0 Lite & 0.311 & 0.260 & $-$0.033 & 0.196 & 1.153 & 0.233 & 0.333 & 0.265 \\
+Doubao Seed 2.0 Pro &  \colorbox{secondcell}{0.329} & 0.257 & \colorbox{secondcell}{$-$0.006} & 0.203 & 1.169 & 0.231 & 0.357 & 0.278 \\
+\midrule
+\multicolumn{9}{l}{\textit{Other}} \\
+Kimi-K2.5 & 0.321 & \colorbox{bestcell}{\textbf{0.293}} & $-$0.018 & 0.146 & 1.201 & 0.288 & 0.317 & 0.285 \\
+GLM-5 & 0.321 & 0.208 & $-$0.018 & 0.140 & 1.121 & 0.208 & 0.345 & 0.245 \\
+GLM-5.1 & 0.305 & 0.219 & $-$0.042 & 0.171 & 1.217 & 0.245 & 0.337 & 0.244 \\
+MiniMax M2.5 & 0.311 & 0.268 & $-$0.033 & 0.194 & 1.267 & \colorbox{secondcell}{0.294} & 0.335 & 0.277 \\
+Qwen3.6-Plus & 0.297 & 0.247 & $-$0.054 & 0.201 & 1.203 & 0.257 & 0.341 & 0.284 \\
+Hunyuan 3 & 0.303 & 0.255 & $-$0.045 & 0.207 & 1.468 & 0.282 & 0.359 & 0.302 \\
+\midrule
+\multicolumn{9}{l}{\textit{Supervised reference}} \\
+TF-IDF + LR & 0.533 & 0.364 & $\phantom{-}$0.145 & 0.242 & 1.632 & 0.341 & 0.498 & 0.338 \\
+Indicator-only MLP & 0.466 & 0.419 & $\phantom{-}$0.191 & 0.129 & 0.306 & 0.371 & 0.441 & 0.389 \\
+\textbf{EnvPolicy-Dual} & \textbf{0.596} & \textbf{0.412} & $\phantom{-}$\textbf{0.281} & \textbf{0.225} & \textbf{0.987} & \textbf{0.382} & \textbf{0.562} & \textbf{0.386} \\
+\bottomrule
+\end{tabular}
+\caption{Zero-shot LLM evaluation on T1 direction, T2 magnitude, T3 geographic holdout (18-country zero-shot),
+and T4 temporal OOD (shock years 2007--2009, 2019--2020). Stratified sample $ n $=498 per split.
+Models grouped by family, ordered by version.
+\colorbox{bestcell}{\textbf{Yellow}} = best; \colorbox{secondcell}{blue} = second best among LLMs.}
+\label{tab:llm_zeroshot}
+\end{table*}

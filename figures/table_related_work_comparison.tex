@@ -1,0 +1,34 @@
+\begin{table*}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lrrcccccc@{}}
+\toprule
+\textbf{Dataset} & \textbf{Size} & \textbf{Countries} &
+\textbf{Env.\ Focus} & \textbf{Policy Text} &
+\textbf{Outcome Labels} & \textbf{Numeric Indicators} &
+\textbf{Leakage-free Splits} & \textbf{OOD Holdout} \\
+\midrule
+\textsc{LexGLUE} \citep{chalkidis-etal-2022-lexglue}
+  & 237k & EU, US & \xmark & \cmark & \xmark & \xmark & \cmark & \xmark \\
+\textsc{MultiEURLEX} \citep{chalkidis2021multieurlex}
+  & 65k & 23 (EU) & \xmark & \cmark & \xmark & \xmark & \cmark & \xmark \\
+\textsc{ClimateBERT} \citep{webersinke2022climatebert}
+  & 4k  & ---  & \cmark & \cmark & \xmark & \xmark & \xmark & \xmark \\
+\textsc{ClimaBench} \citep{spokoyny2023towards}
+  & 170k & Global  & \cmark & \cmark & \xmark & \xmark & \cmark & \xmark \\
+Climate Policy DB \citep{nascimento2022climate}
+  & 6k  & 198  & \cmark & \cmark & \xmark & \xmark & \xmark & \xmark \\
+\citet{dutta2025quantifying}
+  & 1k & 196   & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark \\
+PolicyBench \citep{policyllm2026}
+  & 21k & US, China    & \xmark & \cmark & \xmark & \xmark & \xmark & \xmark \\
+\midrule
+\textbf{\bench{} (ours)}
+  & \textbf{30k} & \textbf{179} & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Comparison of \bench{} with related datasets (\cmark/\xmark: feature present/absent).}
+\label{tab:related}
+\end{table*}
